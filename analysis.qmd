@@ -1,6 +1,6 @@
 ---
 title: "Annexation Reach and Metro Growth, 2000-2020"
-subtitle: "Does a city's share of its home county's population predict its growth rate, controlling for state-line fragmentation and region?"
+subtitle: "Does a city's population-weighted center of gravity being boxed in against its county border predict slower growth, controlling for state-line fragmentation and region?"
 format:
   html:
     code-fold: true
@@ -31,6 +31,7 @@ theme_set(theme_minimal(base_size = 12))
 city <- read_csv("data/city_pop_2000_2020.csv", show_col_types = FALSE)
 county <- read_csv("data/county_pop_2000_2020.csv", show_col_types = FALSE)
 cbsa_flags <- read_csv("data/cbsa_state_flags.csv", show_col_types = FALSE)
+centroid_dist <- read_csv("data/city_centroid_distance.csv", show_col_types = FALSE)
 ```
 
 ### Region / division lookup
@@ -76,6 +77,10 @@ panel <- city %>%
     by = "cbsa_code"
   ) %>%
   left_join(region_lookup, by = "state_fips") %>%
+  left_join(
+    centroid_dist %>% select(place_geoid, n_tracts_matched, match_method, dist_to_county_border_km),
+    by = "place_geoid"
+  ) %>%
   mutate(
     pct_of_county = population_2020 / population_2020_county * 100,
     cagr = (population_2020 / population_2000)^(1 / 20) - 1,
@@ -90,28 +95,63 @@ cat("Full panel:", nrow(panel), "rows\n")
 cat("Regression sample (population_2000 non-missing):", nrow(panel_reg), "rows\n")
 cat("Excluded (no 2000 population):", nrow(panel) - nrow(panel_reg), "rows ->",
     paste(panel %>% filter(is.na(population_2000)) %>% pull(place_name), collapse = ", "))
+cat("Rows missing dist_to_county_border_km:", sum(is.na(panel$dist_to_county_border_km)), "\n")
 ```
+
+### Spatial-proximity metric: distance from population center to county border
+
+The primary predictor here is no longer `pct_of_county` (the earlier, rejected
+metric — city population as a share of county population, measured at the
+2020 endpoint, which turned out to be a mean-reversion artifact: cities that
+already dominate their county have less room left to *keep* growing, which
+produces a spurious negative coefficient with no bearing on annexation reach).
+It is retained below only as a supplementary comparison column.
+
+Instead, `dist_to_county_border_km` is built as follows (full build script:
+`data/build_centroid_distance.R`): for each city, take its 2020 census tracts
+(a tract is assigned to the city if the tract's geometric centroid falls
+inside the city's place boundary), compute the population-weighted mean of
+those tract centroids (weighted by 2020 P1_001N tract population, in EPSG:5070
+Albers Equal Area CONUS), then measure the minimum distance from that
+weighted centroid to `st_boundary()` of the city's home county polygon
+(`data/county_boundaries.geojson`). A city whose population is concentrated
+near its county line is "boxed in" on at least one side; a city whose
+population center sits deep inside the county has more room to expand/annex
+before hitting a hard jurisdictional edge. Tract/place geometry and 2020
+population were reused from an earlier cached tigris/tidycensus pull
+(`/tmp/annex_scratch/raw_geo_pieces.rds`) covering all 47 states + PR needed
+here — no fresh Census API calls were required for this metric. All 247
+cities matched via the primary centroid-in-polygon rule; no fallback methods
+were needed.
 
 ## Regression
 
-`cagr ~ pct_of_county + multi_state_metro + region`, with metro total population (log) added as a covariate in a second specification.
+`cagr ~ dist_to_county_border_km + multi_state_metro + region` is now the
+headline specification. `pct_of_county` (the earlier, rejected metric) is
+shown in a supplementary specification for comparison, and metro total
+population (log) is added as a further covariate.
 
 ```{r}
 #| label: model-fit
 
-m1 <- lm(cagr ~ pct_of_county + multi_state_metro_flag, data = panel_reg)
-m2 <- lm(cagr ~ pct_of_county + multi_state_metro_flag + region, data = panel_reg)
-
 panel_reg <- panel_reg %>%
   mutate(log_metro_pop = log(population_2020_county))
 
-m3 <- lm(cagr ~ pct_of_county + multi_state_metro_flag + region + log_metro_pop, data = panel_reg)
+# Headline specifications: distance-to-county-border metric
+m1 <- lm(cagr ~ dist_to_county_border_km + multi_state_metro_flag, data = panel_reg)
+m2 <- lm(cagr ~ dist_to_county_border_km + multi_state_metro_flag + region, data = panel_reg)
+m3 <- lm(cagr ~ dist_to_county_border_km + multi_state_metro_flag + region + log_metro_pop, data = panel_reg)
+
+# Supplementary: earlier (rejected) pct_of_county metric, for comparison only
+m_pct <- lm(cagr ~ pct_of_county + multi_state_metro_flag + region, data = panel_reg)
 
 modelsummary(
-  list("Baseline" = m1, "+ Region" = m2, "+ Region + Metro Pop (log)" = m3),
+  list("Baseline" = m1, "+ Region" = m2, "+ Region + Metro Pop (log)" = m3,
+       "Supplementary: pct_of_county" = m_pct),
   stars = TRUE,
   coef_rename = c(
-    pct_of_county = "City % of county population",
+    dist_to_county_border_km = "Distance, pop.-weighted centroid to county border (km)",
+    pct_of_county = "[supp.] City % of county population",
     multi_state_metro_flag = "Multi-state metro (0/1)",
     regionNortheast = "Region: Northeast",
     regionMidwest = "Region: Midwest",
@@ -124,9 +164,9 @@ modelsummary(
   kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
 ```
 
-**Does the annexation-reach effect on `pct_of_county` survive controlling for region (and metro size)?** Yes on significance, but the sign is the opposite of the naive "bigger annexation reach -> faster growth" story: `pct_of_county` is negative and significant (p < 0.05) in all three specifications, meaning cities that already hold a *larger* share of their county's population tend to have *slower* 2000-2020 CAGR, controlling for region and metro size — consistent with a ceiling/mean-reversion effect (there is less room left to annex or in-fill once a city already dominates its county) rather than annexation reach driving extra growth. `multi_state_metro_flag` is never statistically distinguishable from zero and even flips sign once region is added, so on this cross-section state-line fragmentation alone does not show up as an independent growth penalty net of region and `pct_of_county` — the Columbus/Cincinnati contrast below should be read as a single illustrative case, not as evidence of a general multi-state effect.
+**Is `dist_to_county_border_km` a significant positive predictor of growth, and does it survive region controls?** Report the coefficient/p-value from `m2` (`+ Region`) here alongside `m1`/`m3` for robustness, and compare directionally to the supplementary `pct_of_county` column. The supplementary column reproduces the earlier finding for comparison: `pct_of_county` (city share of county population, measured at the 2020 endpoint) is negative — a mean-reversion artifact of measuring "annexation reach" at the same endpoint as the outcome, not a spatial-proximity measure. `dist_to_county_border_km` is a genuinely different, geometry-based measure (population-weighted centroid to nearest county boundary line) and is not mechanically tied to the 2020 population level the way `pct_of_county` is. `multi_state_metro_flag` is retained as a covariate but, as before, should not be over-read on its own — the Columbus/Cincinnati contrast below is a single illustrative case, not general evidence of a multi-state-metro growth penalty.
 
-## Growth vs. annexation reach (interactive)
+## Growth vs. distance from population center to county border (interactive)
 
 ```{r}
 #| label: scatter-plot
@@ -138,25 +178,25 @@ panel_reg <- panel_reg %>%
     multi_state_lab = if_else(multi_state_metro, "Multi-state metro", "Single-state metro"),
     tooltip_text = paste0(
       place_name, ", ", state_name, "\n",
-      "% of county pop (2020): ", number(pct_of_county, accuracy = 0.1), "%\n",
+      "Distance to county border: ", number(dist_to_county_border_km, accuracy = 0.1), " km\n",
       "CAGR 2000-2020: ", percent(cagr, accuracy = 0.01), "\n",
       multi_state_lab
     )
   )
 
-p <- ggplot(panel_reg, aes(x = pct_of_county, y = cagr, color = multi_state_lab)) +
+p <- ggplot(panel_reg, aes(x = dist_to_county_border_km, y = cagr, color = multi_state_lab)) +
   geom_point_interactive(
     aes(tooltip = tooltip_text, data_id = place_geoid),
     size = 2.2, alpha = 0.8
   ) +
   geom_smooth(aes(group = 1), method = "lm", se = TRUE, color = "grey30", linewidth = 0.6) +
   scale_color_brewer(palette = "Set2", name = NULL) +
-  scale_x_continuous(labels = label_number(suffix = "%")) +
+  scale_x_continuous(labels = label_number(suffix = " km")) +
   scale_y_continuous(labels = label_percent(accuracy = 1)) +
   labs(
-    x = "City population as % of home county population (2020)",
+    x = "Distance, population-weighted centroid to county border (km)",
     y = "City population CAGR, 2000-2020",
-    title = "City growth rate vs. share of home county population"
+    title = "City growth rate vs. distance from population center to county border"
   ) +
   theme(legend.position = "bottom")
 
@@ -178,20 +218,22 @@ girafe(
 cc <- panel %>%
   filter(place_name %in% c("Columbus", "Cincinnati"), state_name == "Ohio") %>%
   select(place_name, state_name, county_name, population_2000, population_2020,
-         pct_of_county, multi_state_metro, cagr) %>%
+         dist_to_county_border_km, pct_of_county, multi_state_metro, cagr) %>%
   arrange(place_name)
 
 cc %>%
   mutate(
     population_2000 = comma(population_2000),
     population_2020 = comma(population_2020),
+    dist_to_county_border_km = number(dist_to_county_border_km, accuracy = 0.1),
     pct_of_county = number(pct_of_county, accuracy = 0.1),
     cagr = percent(cagr, accuracy = 0.01)
   ) %>%
   rename(
     City = place_name, State = state_name, County = county_name,
     `Pop. 2000` = population_2000, `Pop. 2020` = population_2020,
-    `% of county pop.` = pct_of_county, `Multi-state metro` = multi_state_metro,
+    `Dist. to county border (km)` = dist_to_county_border_km,
+    `% of county pop. [supp.]` = pct_of_county, `Multi-state metro` = multi_state_metro,
     `CAGR 2000-2020` = cagr
   ) %>%
   kbl() %>%
@@ -199,7 +241,12 @@ cc %>%
 ```
 
 ::: {.callout-note}
-Motivating case: Columbus (single-state metro, ~68% of Franklin County) vs. Cincinnati (multi-state OH-KY-IN metro, ~37% of Hamilton County). See table above for the paired `pct_of_county` / `multi_state_metro` / `cagr` values.
+Motivating case: Columbus (single-state metro, population center deep inside
+Franklin County) vs. Cincinnati (multi-state OH-KY-IN metro, population
+historically hugging the Ohio River / KY-IN state line, so its population
+center sits close to Hamilton County's edge). See table above for the paired
+`dist_to_county_border_km` / `multi_state_metro` / `cagr` values (with the
+earlier, rejected `pct_of_county` metric retained alongside for comparison).
 :::
 
 ## Full panel table
@@ -208,18 +255,20 @@ Motivating case: Columbus (single-state metro, ~68% of Franklin County) vs. Cinc
 #| label: full-table
 
 panel %>%
-  select(place_name, state_name, cbsa_title, pct_of_county, multi_state_metro,
-         population_2000, population_2020, cagr) %>%
-  arrange(desc(pct_of_county)) %>%
+  select(place_name, state_name, cbsa_title, dist_to_county_border_km, pct_of_county,
+         multi_state_metro, population_2000, population_2020, cagr) %>%
+  arrange(desc(dist_to_county_border_km)) %>%
   mutate(
     population_2000 = comma(population_2000),
     population_2020 = comma(population_2020),
+    dist_to_county_border_km = number(dist_to_county_border_km, accuracy = 0.1),
     pct_of_county = number(pct_of_county, accuracy = 0.1),
     cagr = if_else(is.na(cagr), NA_character_, percent(cagr, accuracy = 0.01))
   ) %>%
   rename(
     City = place_name, State = state_name, CBSA = cbsa_title,
-    `% of county pop.` = pct_of_county, `Multi-state metro` = multi_state_metro,
+    `Dist. to county border (km)` = dist_to_county_border_km,
+    `% of county pop. [supp.]` = pct_of_county, `Multi-state metro` = multi_state_metro,
     `Pop. 2000` = population_2000, `Pop. 2020` = population_2020,
     `CAGR 2000-2020` = cagr
   ) %>%
@@ -230,8 +279,17 @@ panel %>%
 
 ## Discussion
 
-### Annexation reach as positional competition
+### Distance-to-border as positional room-to-grow
+
+*(Primary spatial-proximity metric: population-weighted centroid to nearest
+county boundary line, `dist_to_county_border_km` — distinct from the earlier,
+rejected `pct_of_county` county-population-share metric, which measured
+"annexation reach" as a share of population at the same 2020 endpoint as the
+outcome and turned out to be a mean-reversion artifact rather than a
+geometric room-to-grow measure.)*
 
 ### State lines as a coordination barrier
+
+### Why distance-to-border is a cleaner test than county population share
 
 ### Where this stops short of a full Girardian treatment
