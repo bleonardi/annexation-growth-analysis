@@ -1,0 +1,248 @@
+---
+title: "Mapping Annexation Reach: Population Centers, City Boundaries, County Lines"
+subtitle: "Top 100 Cities by 2020 Population, Plus Columbus and Cincinnati, OH"
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(htmltools)
+library(RColorBrewer)
+library(scales)
+
+sf_use_s2(TRUE)
+```
+
+## Data
+
+Same panel as `analysis.qmd` (`city_pop_2000_2020.csv`, `county_pop_2000_2020.csv`,
+`cbsa_state_flags.csv`, `city_centroid_distance.csv`), plus two geometry layers:
+`data/county_boundaries.geojson` (home-county polygons, already EPSG:4326) and
+`data/city_place_boundaries.geojson` (place polygons for the plotted cities,
+built by `data/build_place_boundaries.R` by reusing the tigris place cache at
+`/tmp/annex_scratch/raw_geo_pieces.rds` rather than a fresh `tigris::places()`
+pull -- the same cache `build_centroid_distance.R` used).
+
+```{r}
+#| label: load-data
+#| message: false
+#| warning: false
+
+city <- read_csv("data/city_pop_2000_2020.csv", show_col_types = FALSE)
+county <- read_csv("data/county_pop_2000_2020.csv", show_col_types = FALSE)
+cbsa_flags <- read_csv("data/cbsa_state_flags.csv", show_col_types = FALSE)
+centroid_dist <- read_csv("data/city_centroid_distance.csv", show_col_types = FALSE)
+
+county_bd <- st_read("data/county_boundaries.geojson", quiet = TRUE)
+place_bd <- st_read("data/city_place_boundaries.geojson", quiet = TRUE)
+```
+
+### Build the same analysis panel as `analysis.qmd`
+
+```{r}
+#| label: build-panel
+
+region_lookup <- tribble(
+  ~state_fips, ~region,
+  "09", "Northeast", "23", "Northeast", "25", "Northeast", "33", "Northeast",
+  "44", "Northeast", "50", "Northeast", "34", "Northeast", "36", "Northeast",
+  "42", "Northeast",
+  "18", "Midwest", "17", "Midwest", "26", "Midwest", "39", "Midwest",
+  "55", "Midwest", "19", "Midwest", "20", "Midwest", "27", "Midwest",
+  "29", "Midwest", "31", "Midwest", "38", "Midwest", "46", "Midwest",
+  "10", "South", "11", "South", "12", "South", "13", "South", "24", "South",
+  "37", "South", "45", "South", "51", "South", "54", "South", "01", "South",
+  "21", "South", "28", "South", "47", "South", "05", "South", "22", "South",
+  "40", "South", "48", "South",
+  "04", "West", "08", "West", "16", "West", "35", "West", "30", "West",
+  "49", "West", "32", "West", "56", "West", "02", "West", "06", "West",
+  "15", "West", "41", "West", "53", "West",
+  "72", "Puerto Rico"
+)
+
+panel <- city %>%
+  left_join(
+    county %>% select(county_fips, county_name, population_2020_county = population_2020),
+    by = "county_fips"
+  ) %>%
+  left_join(
+    cbsa_flags %>% select(cbsa_code, n_states, multi_state_metro),
+    by = "cbsa_code"
+  ) %>%
+  left_join(region_lookup, by = "state_fips") %>%
+  left_join(
+    centroid_dist %>% select(place_geoid, n_tracts_matched, match_method,
+                              centroid_x_5070, centroid_y_5070, dist_to_county_border_km),
+    by = "place_geoid"
+  ) %>%
+  mutate(
+    cagr = (population_2020 / population_2000)^(1 / 20) - 1
+  )
+```
+
+### Select cities to plot: top 100 by 2020 population, plus Columbus/Cincinnati OH
+
+```{r}
+#| label: select-cities
+
+top100_geoids <- panel %>%
+  arrange(desc(population_2020)) %>%
+  slice_head(n = 100) %>%
+  pull(place_geoid)
+
+anchor_geoids <- panel %>%
+  filter(place_name %in% c("Columbus", "Cincinnati"), state_name == "Ohio") %>%
+  pull(place_geoid)
+
+selected_geoids <- union(top100_geoids, anchor_geoids)
+
+map_panel <- panel %>%
+  filter(place_geoid %in% selected_geoids, !is.na(centroid_x_5070), !is.na(centroid_y_5070))
+
+cat("Cities plotted:", nrow(map_panel), "\n")
+cat("Home counties among plotted cities:", n_distinct(map_panel$county_fips), "\n")
+cat("Place boundaries available:", nrow(place_bd), "\n")
+```
+
+### Reproject centroids to WGS84 for leaflet
+
+```{r}
+#| label: reproject-centroids
+
+centroid_pts <- map_panel %>%
+  filter(!is.na(centroid_x_5070), !is.na(centroid_y_5070)) %>%
+  st_as_sf(coords = c("centroid_x_5070", "centroid_y_5070"), crs = 5070) %>%
+  st_transform(4326)
+
+coords_ll <- st_coordinates(centroid_pts)
+centroid_pts <- centroid_pts %>%
+  mutate(lon = coords_ll[, "X"], lat = coords_ll[, "Y"])
+```
+
+### Filter county + place boundary layers to the plotted cities' home counties
+
+```{r}
+#| label: filter-boundaries
+
+county_bd_sel <- county_bd %>%
+  filter(county_fips %in% map_panel$county_fips)
+
+place_bd_sel <- place_bd %>%
+  filter(place_geoid %in% map_panel$place_geoid)
+
+cat("County polygons on map:", nrow(county_bd_sel), "\n")
+cat("Place polygons on map:", nrow(place_bd_sel), "\n")
+```
+
+## Interactive map
+
+Marker color and size are both driven by `dist_to_county_border_km` (the
+paper's primary spatial-proximity metric): cities whose population-weighted
+center sits close to the county line are "boxed in," cities whose center sits
+deep inside the county have more room to expand. County boundaries are drawn
+as thin grey outlines with light fill; city place boundaries are drawn as
+thicker blue outlines with no fill, so city-within-county containment is
+visible at a glance. Columbus and Cincinnati, OH -- the paper's motivating
+single-state-vs-multi-state-metro contrast -- get a distinct gold marker and
+a bold callout in their popups.
+
+```{r}
+#| label: leaflet-map
+#| fig-width: 9
+#| fig-height: 7
+
+pal <- colorNumeric(
+  palette = "YlOrRd",
+  domain = centroid_pts$dist_to_county_border_km
+)
+
+get_radius <- function(d) {
+  scales::rescale(d, to = c(5, 16), from = range(centroid_pts$dist_to_county_border_km, na.rm = TRUE))
+}
+
+is_anchor <- centroid_pts$place_geoid %in% anchor_geoids
+
+popup_html <- function(name, state, county, dist_km, cagr, multi_state, anchor) {
+  header <- if (anchor) {
+    paste0("<b style='font-size:1.05em;color:#b8860b;'>&#9733; ", name, ", ", state, "</b>")
+  } else {
+    paste0("<b>", name, ", ", state, "</b>")
+  }
+  HTML(paste0(
+    header, "<br/>",
+    "Home county: ", county, "<br/>",
+    "Distance to county border: ", number(dist_km, accuracy = 0.1), " km<br/>",
+    "CAGR 2000-2020: ", percent(cagr, accuracy = 0.01), "<br/>",
+    "Multi-state metro: ", if_else(multi_state, "Yes", "No")
+  ))
+}
+
+popups <- pmap_chr(
+  list(centroid_pts$place_name, centroid_pts$state_name, centroid_pts$county_name,
+       centroid_pts$dist_to_county_border_km, centroid_pts$cagr,
+       centroid_pts$multi_state_metro, is_anchor),
+  function(name, state, county, dist_km, cagr, multi_state, anchor) {
+    as.character(popup_html(name, state, county, dist_km, cagr, multi_state, anchor))
+  }
+)
+
+leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(
+    data = county_bd_sel,
+    color = "grey40", weight = 1, opacity = 0.7,
+    fillColor = "grey80", fillOpacity = 0.12,
+    label = ~county_namelsad,
+    group = "County boundaries"
+  ) %>%
+  addPolygons(
+    data = place_bd_sel,
+    color = "#2166AC", weight = 2, opacity = 0.9,
+    fill = FALSE,
+    label = ~place_name_geo,
+    group = "City boundaries"
+  ) %>%
+  addCircleMarkers(
+    data = centroid_pts[!is_anchor, ],
+    lng = ~lon, lat = ~lat,
+    radius = ~get_radius(dist_to_county_border_km),
+    color = "black", weight = 1,
+    fillColor = ~pal(dist_to_county_border_km),
+    fillOpacity = 0.85,
+    popup = popups[!is_anchor],
+    group = "Population-weighted centroids"
+  ) %>%
+  addCircleMarkers(
+    data = centroid_pts[is_anchor, ],
+    lng = ~lon, lat = ~lat,
+    radius = ~get_radius(dist_to_county_border_km) + 3,
+    color = "black", weight = 2,
+    fillColor = "#FFD700",
+    fillOpacity = 0.95,
+    popup = popups[is_anchor],
+    group = "Population-weighted centroids"
+  ) %>%
+  addLegend(
+    "bottomright", pal = pal, values = centroid_pts$dist_to_county_border_km,
+    title = "Distance, centroid to<br/>county border (km)",
+    opacity = 1
+  ) %>%
+  addLayersControl(
+    overlayGroups = c("County boundaries", "City boundaries", "Population-weighted centroids"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  setView(lng = -93, lat = 38, zoom = 4)
+```
+
+::: {.callout-note}
+Gold markers are Columbus and Cincinnati, OH. Columbus's population-weighted
+centroid sits deep inside Franklin County (single-state metro); Cincinnati's
+sits close to Hamilton County's edge, consistent with its historical
+orientation toward the Ohio River / KY-IN state line (multi-state metro). See
+`analysis.qmd` for the paired regression table and full-panel comparison.
+:::
