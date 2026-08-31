@@ -1,0 +1,201 @@
+county_fips,state_fips,county_name,principal_cities,cbsa_codes,spans_multiple_counties,population_2000,population_2020
+06037,06,"Los Angeles County, California",Burbank; Glendale; Long Beach; Los Angeles; Pasadena; Torrance,31080,FALSE,9519338,10014009
+17031,17,"Cook County, Illinois",Chicago,16980,FALSE,5376741,5275541
+48201,48,"Harris County, Texas",Houston; Pasadena,26420,TRUE,3400578,4731145
+04013,04,"Maricopa County, Arizona",Chandler; Gilbert; Mesa; Phoenix; Scottsdale; Tempe,38060,FALSE,3072149,4420568
+06073,06,"San Diego County, California",Carlsbad; Chula Vista; San Diego,41740,FALSE,2813833,3298634
+06059,06,"Orange County, California",Anaheim; Costa Mesa; Irvine; Orange; Santa Ana,31080,FALSE,2846289,3186989
+36047,36,"Kings County, New York",New York,35620,TRUE,2465326,2736074
+12086,12,"Miami-Dade County, Florida",Miami,33100,FALSE,2253362,2701767
+48113,48,"Dallas County, Texas",Dallas; Irving; Richardson,19100,TRUE,2218899,2613539
+06065,06,"Riverside County, California",Corona; Riverside; Temecula,40140,FALSE,1545387,2418185
+53033,53,"King County, Washington",Bellevue; Kent; Renton; Seattle,42660,FALSE,1737034,2269675
+32003,32,"Clark County, Nevada",Henderson; Las Vegas; North Las Vegas; Paradise,29820,FALSE,1375765,2265461
+06071,06,"San Bernardino County, California",Ontario; San Bernardino,40140,FALSE,1709434,2181654
+48439,48,"Tarrant County, Texas",Arlington; Fort Worth,19100,TRUE,1446219,2110640
+48029,48,"Bexar County, Texas",San Antonio,41700,FALSE,1392931,2009324
+12011,12,"Broward County, Florida",Fort Lauderdale; Pompano Beach,33100,FALSE,1623018,1944375
+06085,06,"Santa Clara County, California",San Jose; Santa Clara; Sunnyvale,41940,FALSE,1682585,1936259
+26163,26,"Wayne County, Michigan",Dearborn; Detroit,19820,FALSE,2061162,1793561
+06001,06,"Alameda County, California",Berkeley; Fremont; Oakland,41860,FALSE,1443741,1682353
+25017,25,"Middlesex County, Massachusetts",Cambridge,14460,FALSE,1465396,1632002
+42101,42,"Philadelphia County, Pennsylvania",Philadelphia,37980,FALSE,1517550,1603797
+06067,06,"Sacramento County, California",Sacramento,40900,FALSE,1223499,1585055
+12099,12,"Palm Beach County, Florida",West Palm Beach,33100,FALSE,1131184,1492191
+12057,12,"Hillsborough County, Florida",Tampa,45300,FALSE,998948,1459762
+12095,12,"Orange County, Florida",Orlando,36740,FALSE,896344,1429908
+39049,39,"Franklin County, Ohio",Columbus,18140,TRUE,1068978,1323807
+48453,48,"Travis County, Texas",Austin,12420,TRUE,812280,1290188
+27053,27,"Hennepin County, Minnesota",Minneapolis,33460,FALSE,1116200,1281565
+39035,39,"Cuyahoga County, Ohio",Cleveland,17410,FALSE,1393978,1264817
+42003,42,"Allegheny County, Pennsylvania",Pittsburgh,38300,FALSE,1281666,1250578
+49035,49,"Salt Lake County, Utah",Salt Lake City,41620,FALSE,898387,1185238
+37183,37,"Wake County, North Carolina",Cary; Raleigh,39580,FALSE,627846,1129410
+37119,37,"Mecklenburg County, North Carolina",Charlotte,16740,FALSE,695454,1115482
+13121,13,"Fulton County, Georgia",Atlanta; Sandy Springs,12060,TRUE,816006,1066710
+48085,48,"Collin County, Texas",Plano,19100,TRUE,491675,1064465
+04019,04,"Pima County, Arizona",Tucson,46060,FALSE,843746,1043433
+15003,15,"Honolulu County, Hawaii",Urban Honolulu,46520,FALSE,876156,1016508
+06019,06,"Fresno County, California",Fresno,23420,FALSE,799407,1008654
+12031,12,"Duval County, Florida",Jacksonville,27260,FALSE,778879,995567
+18097,18,"Marion County, Indiana",Indianapolis city (balance),26900,FALSE,860454,977203
+12103,12,"Pinellas County, Florida",Clearwater; St. Petersburg,45300,FALSE,921482,959107
+09001,09,"Fairfield County, Connecticut",Bridgeport; Stamford,14860,FALSE,882567,957419
+36029,36,"Erie County, New York",Buffalo,15380,FALSE,950265,954236
+55079,55,"Milwaukee County, Wisconsin",Milwaukee,33340,FALSE,940164,939489
+17043,17,"DuPage County, Illinois",Naperville,16980,TRUE,904161,932877
+47157,47,"Shelby County, Tennessee",Memphis,32820,FALSE,897472,929744
+53053,53,"Pierce County, Washington",Tacoma,42660,FALSE,700820,921130
+06029,06,"Kern County, California",Bakersfield,12540,FALSE,661645,909235
+48121,48,"Denton County, Texas",Denton,19100,FALSE,432976,906422
+09003,09,"Hartford County, Connecticut",Hartford,25540,FALSE,857183,899498
+26099,26,"Macomb County, Michigan",Warren,19820,FALSE,788149,881217
+06075,06,"San Francisco County, California",San Francisco,41860,FALSE,776733,873965
+48215,48,"Hidalgo County, Texas",Edinburg; McAllen,32580,FALSE,569463,870781
+48141,48,"El Paso County, Texas",El Paso,21340,FALSE,679622,865657
+09009,09,"New Haven County, Connecticut",New Haven; Waterbury,35300; 47930,FALSE,824008,864835
+34013,34,"Essex County, New Jersey",Newark,35620,FALSE,793633,863728
+25027,25,"Worcester County, Massachusetts",Worcester,49340,FALSE,750963,862111
+06111,06,"Ventura County, California",Oxnard; San Buenaventura (Ventura); Thousand Oaks,37100,FALSE,753197,843843
+39061,39,"Hamilton County, Ohio",Cincinnati,17140,FALSE,845303,830639
+53061,53,"Snohomish County, Washington",Everett,42660,FALSE,606024,827957
+48157,48,"Fort Bend County, Texas",Sugar Land,26420,FALSE,354452,822779
+41051,41,"Multnomah County, Oregon",Portland,38900,FALSE,660486,815428
+25025,25,"Suffolk County, Massachusetts",Boston,14460,FALSE,689807,797936
+40109,40,"Oklahoma County, Oklahoma",Oklahoma City,36420,TRUE,660448,796292
+21111,21,"Jefferson County, Kentucky",Louisville/Jefferson County metro government (balance),31140,FALSE,693604,782969
+06077,06,"San Joaquin County, California",Stockton,44700,FALSE,563598,779233
+06081,06,"San Mateo County, California",San Mateo,41860,FALSE,707161,764442
+12071,12,"Lee County, Florida",Cape Coral,15980,FALSE,440888,760822
+36055,36,"Monroe County, New York",Rochester,40380,FALSE,735343,759443
+08041,08,"El Paso County, Colorado",Colorado Springs,17820,FALSE,516929,730395
+12105,12,"Polk County, Florida",Lakeland,29460,FALSE,483924,725046
+34017,34,"Hudson County, New Jersey",Jersey City,35620,FALSE,608975,724854
+29095,29,"Jackson County, Missouri",Kansas City,28140,TRUE,654880,717204
+47037,47,"Davidson County, Tennessee",Nashville-Davidson metropolitan government (balance),34980,FALSE,569891,715884
+08031,08,"Denver County, Colorado",Denver,19740,FALSE,554636,715522
+11001,11,"District of Columbia, District of Columbia",Washington,47900,FALSE,572059,689545
+35001,35,"Bernalillo County, New Mexico",Albuquerque,10740,FALSE,556678,676444
+01073,01,"Jefferson County, Alabama",Birmingham,13820,TRUE,662047,674721
+40143,40,"Tulsa County, Oklahoma",Tulsa,46140,TRUE,563299,669279
+44007,44,"Providence County, Rhode Island",Providence,39300,FALSE,621602,660741
+49049,49,"Utah County, Utah",Provo,39340,FALSE,368536,659399
+26081,26,"Kent County, Michigan",Grand Rapids,24340,FALSE,574335,657974
+08005,08,"Arapahoe County, Colorado",Aurora; Centennial,19740,TRUE,487967,655070
+48339,48,"Montgomery County, Texas",The Woodlands,26420,TRUE,293768,620443
+20091,20,"Johnson County, Kansas",Overland Park,28140,FALSE,451086,609863
+48491,48,"Williamson County, Texas",Round Rock,12420,FALSE,249967,609017
+12009,12,"Brevard County, Florida",Palm Bay,37340,FALSE,476230,606612
+41067,41,"Washington County, Oregon",Hillsboro,38900,FALSE,445342,600372
+24510,24,"Baltimore city, Maryland",Baltimore,12580,FALSE,651154,585708
+31055,31,"Douglas County, Nebraska",Omaha,36540,FALSE,463585,584526
+55025,55,"Dane County, Wisconsin",Madison,31540,FALSE,426526,561504
+06099,06,"Stanislaus County, California",Modesto,33700,FALSE,446997,552878
+27123,27,"Ramsey County, Minnesota",St. Paul,33460,FALSE,511035,552352
+37081,37,"Guilford County, North Carolina",Greensboro; High Point,24660,FALSE,421048,541299
+39153,39,"Summit County, Ohio",Akron,10420,FALSE,542899,540428
+53063,53,"Spokane County, Washington",Spokane; Spokane Valley,44060,FALSE,417939,539339
+39113,39,"Montgomery County, Ohio",Dayton,19430,FALSE,559062,537309
+20173,20,"Sedgwick County, Kansas",Wichita,48620,FALSE,452869,523824
+17089,17,"Kane County, Illinois",Elgin,16980,TRUE,404119,516522
+53011,53,"Clark County, Washington",Vancouver,38900,FALSE,345238,503311
+16001,16,"Ada County, Idaho",Boise City,14260,FALSE,300904,494967
+19153,19,"Polk County, Iowa",Des Moines,19780,TRUE,374601,492401
+06097,06,"Sonoma County, California",Santa Rosa,42220,FALSE,458614,488863
+32031,32,"Washoe County, Nevada",Reno,39900,FALSE,339486,486492
+47093,47,"Knox County, Tennessee",Knoxville,28940,FALSE,382032,478971
+36067,36,"Onondaga County, New York",Syracuse,45060,FALSE,458336,476516
+06107,06,"Tulare County, California",Visalia,47300,FALSE,368021,473117
+25013,25,"Hampden County, Massachusetts",Springfield,44140,FALSE,456228,465825
+51810,51,"Virginia Beach city, Virginia",Virginia Beach,47260,FALSE,425257,459470
+22033,22,"East Baton Rouge Parish, Louisiana",Baton Rouge,12940,FALSE,412852,456781
+06095,06,"Solano County, California",Vallejo,46700,FALSE,394542,453491
+06083,06,"Santa Barbara County, California",Santa Maria,42200,FALSE,399347,448229
+22051,22,"Jefferson Parish, Louisiana",Metairie,35380,FALSE,455466,440781
+06053,06,"Monterey County, California",Salinas,41500,FALSE,401762,439035
+39095,39,"Lucas County, Ohio",Toledo,45780,FALSE,455054,431279
+33011,33,"Hillsborough County, New Hampshire",Manchester,31700,FALSE,380841,422937
+48061,48,"Cameron County, Texas",Brownsville,15180,FALSE,335227,421017
+45079,45,"Richland County, South Carolina",Columbia,17900,FALSE,320677,416147
+01097,01,"Mobile County, Alabama",Mobile,33660,FALSE,399843,414809
+45019,45,"Charleston County, South Carolina",Charleston; North Charleston,16700,TRUE,309969,408235
+06061,06,"Placer County, California",Roseville,40900,FALSE,248399,404739
+05119,05,"Pulaski County, Arkansas",Little Rock,30780,FALSE,361474,399125
+01089,01,"Madison County, Alabama",Huntsville,26620,TRUE,276700,388153
+18003,18,"Allen County, Indiana",Fort Wayne,23060,FALSE,331849,385410
+22071,22,"Orleans Parish, Louisiana",New Orleans,35380,FALSE,484674,383997
+41039,41,"Lane County, Oregon",Eugene,21660,FALSE,322959,382971
+37067,37,"Forsyth County, North Carolina",Winston-Salem,49180,FALSE,306067,382590
+42077,42,"Lehigh County, Pennsylvania",Allentown,10900,FALSE,312090,374557
+26161,26,"Washtenaw County, Michigan",Ann Arbor,11460,FALSE,322895,372258
+48027,48,"Bell County, Texas",Killeen,28660,FALSE,237974,370647
+47065,47,"Hamilton County, Tennessee",Chattanooga,16860,FALSE,307896,366207
+08069,08,"Larimer County, Colorado",Fort Collins,22660,FALSE,251494,359066
+48355,48,"Nueces County, Texas",Corpus Christi,18580,FALSE,313645,353178
+41047,41,"Marion County, Oregon",Salem,41420,TRUE,284834,345920
+72127,72,"San Juan Municipio, Puerto Rico",San Juan,41980,FALSE,434374,342259
+47149,47,"Rutherford County, Tennessee",Murfreesboro,34980,FALSE,182023,341486
+37051,37,"Cumberland County, North Carolina",Fayetteville,22180,FALSE,302963,334728
+24027,24,"Howard County, Maryland",Columbia,12580,FALSE,247842,332317
+08013,08,"Boulder County, Colorado",Boulder,14500,FALSE,291288,330758
+12111,12,"St. Lucie County, Florida",Port St. Lucie,38940,FALSE,192695,329226
+08123,08,"Weld County, Colorado",Greeley,24540,FALSE,180936,328981
+37063,37,"Durham County, North Carolina",Durham,20500,FALSE,223314,324833
+31109,31,"Lancaster County, Nebraska",Lincoln,30700,FALSE,250291,322608
+21067,21,"Fayette County, Kentucky",Lexington-Fayette,30460,FALSE,260512,322570
+48303,48,"Lubbock County, Texas",Lubbock,31180,FALSE,242628,310639
+29510,29,"St. Louis city, Missouri",St. Louis,41180,FALSE,348189,301578
+29077,29,"Greene County, Missouri",Springfield,44180,FALSE,240391,298915
+13051,13,"Chatham County, Georgia",Savannah,42340,FALSE,232048,295291
+12073,12,"Leon County, Florida",Tallahassee,45220,FALSE,239452,292198
+02020,02,"Anchorage Municipality, Alaska",Anchorage,11260,FALSE,260283,291247
+17201,17,"Winnebago County, Illinois",Rockford,40420,FALSE,278418,285350
+26065,26,"Ingham County, Michigan",Lansing,29620,TRUE,279320,284900
+12001,12,"Alachua County, Florida",Gainesville,23540,FALSE,217955,278468
+18141,18,"St. Joseph County, Indiana",South Bend,43780,FALSE,265559,272912
+55009,55,"Brown County, Wisconsin",Green Bay,24580,FALSE,226778,268740
+48479,48,"Webb County, Texas",Laredo,29700,FALSE,193117,267114
+48309,48,"McLennan County, Texas",Waco,47380,FALSE,213517,260579
+48245,48,"Jefferson County, Texas",Beaumont,13140,FALSE,252051,256526
+51550,51,"Chesapeake city, Virginia",Chesapeake,47260,FALSE,199184,249422
+22055,22,"Lafayette Parish, Louisiana",Lafayette,29180,FALSE,190503,241753
+51013,51,"Arlington County, Virginia",Arlington,47900,FALSE,189453,238643
+51710,51,"Norfolk city, Virginia",Norfolk,47260,FALSE,234403,238005
+22017,22,"Caddo Parish, Louisiana",Shreveport,43340,TRUE,252161,237848
+48041,48,"Brazos County, Texas",College Station,17780,FALSE,152415,233849
+48423,48,"Smith County, Texas",Tyler,46340,FALSE,174706,233479
+19113,19,"Linn County, Iowa",Cedar Rapids,16300,FALSE,191701,230299
+01101,01,"Montgomery County, Alabama",Montgomery,33860,FALSE,223510,228954
+28049,28,"Hinds County, Mississippi",Jackson,27140,TRUE,250800,227742
+51760,51,"Richmond city, Virginia",Richmond,40060,FALSE,197790,226610
+37025,37,"Cabarrus County, North Carolina",Concord,16740,FALSE,131063,225804
+37129,37,"New Hanover County, North Carolina",Wilmington,48900,FALSE,160307,225702
+47125,47,"Montgomery County, Tennessee",Clarksville,17300,FALSE,134768,220069
+35013,35,"Doña Ana County, New Mexico",Las Cruces,29740,FALSE,174682,219561
+06007,06,"Butte County, California",Chico,17020,FALSE,203171,211632
+13215,13,"Muscogee County, Georgia",Columbus,17980,FALSE,186291,206922
+13245,13,"Richmond County, Georgia",Augusta-Richmond County consolidated government (balance),12260,FALSE,199775,206607
+46099,46,"Minnehaha County, South Dakota",Sioux Falls,43620,TRUE,148281,197214
+17167,17,"Sangamon County, Illinois",Springfield,44100,FALSE,188951,196343
+51700,51,"Newport News city, Virginia",Newport News,47260,FALSE,180150,186247
+72021,72,"Bayamón Municipio, Puerto Rico",Bayam<U+00F3>n,41980,FALSE,224044,185187
+38017,38,"Cass County, North Dakota",Fargo,22020,FALSE,123138,184525
+29019,29,"Boone County, Missouri",Columbia,17860,FALSE,135454,183610
+17143,17,"Peoria County, Illinois",Peoria,37900,FALSE,183433,181830
+18163,18,"Vanderburgh County, Indiana",Evansville,21780,FALSE,171922,180136
+20177,20,"Shawnee County, Kansas",Topeka,45820,FALSE,169871,178909
+19163,19,"Scott County, Iowa",Davenport,19340,FALSE,158668,174669
+48329,48,"Midland County, Texas",Midland,33260,FALSE,116009,169983
+20209,20,"Wyandotte County, Kansas",Kansas City,28140,FALSE,157882,169245
+08101,08,"Pueblo County, Colorado",Pueblo,39380,FALSE,141472,168162
+48135,48,"Ector County, Texas",Odessa,36220,FALSE,121123,165171
+30111,30,"Yellowstone County, Montana",Billings,13740,FALSE,129352,164731
+27109,27,"Olmsted County, Minnesota",Rochester,40340,FALSE,124277,162847
+51510,51,"Alexandria city, Virginia",Alexandria,47900,FALSE,128283,159467
+13021,13,"Bibb County, Georgia",Macon-Bibb County,31420,FALSE,153887,157346
+48441,48,"Taylor County, Texas",Abilene,10180,TRUE,126555,143208
+72113,72,"Ponce Municipio, Puerto Rico",Ponce,38660,FALSE,186475,137491
+48485,48,"Wichita County, Texas",Wichita Falls,48660,FALSE,131664,129350
+13059,13,"Clarke County, Georgia",Athens-Clarke County unified government (balance),12020,FALSE,101489,128671
+48375,48,"Potter County, Texas",Amarillo,11100,TRUE,113546,118525
+51770,51,"Roanoke city, Virginia",Roanoke,40220,FALSE,94911,100011

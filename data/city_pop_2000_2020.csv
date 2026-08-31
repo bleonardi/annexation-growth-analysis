@@ -1,0 +1,248 @@
+place_name,state_name,state_fips,place_geoid,cbsa_code,cbsa_title,metro_micro,population_2000,population_2020,county_fips,spans_multiple_counties
+New York,New York,36,3651000,35620,"New York-Newark-Jersey City, NY-NJ",Metropolitan Statistical Area,8008278,8804190,36047,TRUE
+Los Angeles,California,06,0644000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,3694820,3898747,06037,FALSE
+Chicago,Illinois,17,1714000,16980,"Chicago-Naperville-Elgin, IL-IN",Metropolitan Statistical Area,2896016,2746388,17031,FALSE
+Houston,Texas,48,4835000,26420,"Houston-Pasadena-The Woodlands, TX",Metropolitan Statistical Area,1953631,2304580,48201,TRUE
+Phoenix,Arizona,04,0455000,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,1321045,1608139,04013,FALSE
+Philadelphia,Pennsylvania,42,4260000,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",Metropolitan Statistical Area,1517550,1603797,42101,FALSE
+San Antonio,Texas,48,4865000,41700,"San Antonio-New Braunfels, TX",Metropolitan Statistical Area,1144646,1434625,48029,FALSE
+San Diego,California,06,0666000,41740,"San Diego-Chula Vista-Carlsbad, CA",Metropolitan Statistical Area,1223400,1386932,06073,FALSE
+Dallas,Texas,48,4819000,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,1188580,1304379,48113,TRUE
+San Jose,California,06,0668000,41940,"San Jose-Sunnyvale-Santa Clara, CA",Metropolitan Statistical Area,894943,1013240,06085,FALSE
+Austin,Texas,48,4805000,12420,"Austin-Round Rock-San Marcos, TX",Metropolitan Statistical Area,656562,961855,48453,TRUE
+Jacksonville,Florida,12,1235000,27260,"Jacksonville, FL",Metropolitan Statistical Area,735617,949611,12031,FALSE
+Fort Worth,Texas,48,4827000,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,534694,918915,48439,TRUE
+Columbus,Ohio,39,3918000,18140,"Columbus, OH",Metropolitan Statistical Area,711470,905748,39049,TRUE
+Indianapolis city (balance),Indiana,18,1836003,26900,"Indianapolis-Carmel-Greenwood, IN",Metropolitan Statistical Area,781870,887642,18097,FALSE
+Charlotte,North Carolina,37,3712000,16740,"Charlotte-Concord-Gastonia, NC-SC",Metropolitan Statistical Area,540828,874579,37119,FALSE
+San Francisco,California,06,0667000,41860,"San Francisco-Oakland-Fremont, CA",Metropolitan Statistical Area,776733,873965,06075,FALSE
+Seattle,Washington,53,5363000,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,563374,737015,53033,FALSE
+Denver,Colorado,08,0820000,19740,"Denver-Aurora-Centennial, CO",Metropolitan Statistical Area,554636,715522,08031,FALSE
+Washington,District of Columbia,11,1150000,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Metropolitan Statistical Area,572059,689545,11001,FALSE
+Nashville-Davidson metropolitan government (balance),Tennessee,47,4752006,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN",Metropolitan Statistical Area,545524,689447,47037,FALSE
+Oklahoma City,Oklahoma,40,4055000,36420,"Oklahoma City, OK",Metropolitan Statistical Area,506132,681054,40109,TRUE
+El Paso,Texas,48,4824000,21340,"El Paso, TX",Metropolitan Statistical Area,563662,678815,48141,FALSE
+Boston,Massachusetts,25,2507000,14460,"Boston-Cambridge-Newton, MA-NH",Metropolitan Statistical Area,589141,675647,25025,FALSE
+Portland,Oregon,41,4159000,38900,"Portland-Vancouver-Hillsboro, OR-WA",Metropolitan Statistical Area,529121,652503,41051,FALSE
+Las Vegas,Nevada,32,3240000,29820,"Las Vegas-Henderson-North Las Vegas, NV",Metropolitan Statistical Area,478434,641903,32003,FALSE
+Detroit,Michigan,26,2622000,19820,"Detroit-Warren-Dearborn, MI",Metropolitan Statistical Area,951270,639111,26163,FALSE
+Memphis,Tennessee,47,4748000,32820,"Memphis, TN-MS-AR",Metropolitan Statistical Area,650100,633104,47157,FALSE
+Baltimore,Maryland,24,2404000,12580,"Baltimore-Columbia-Towson, MD",Metropolitan Statistical Area,651154,585708,24510,FALSE
+Milwaukee,Wisconsin,55,5553000,33340,"Milwaukee-Waukesha, WI",Metropolitan Statistical Area,596974,577222,55079,FALSE
+Albuquerque,New Mexico,35,3502000,10740,"Albuquerque, NM",Metropolitan Statistical Area,448607,564559,35001,FALSE
+Tucson,Arizona,04,0477000,46060,"Tucson, AZ",Metropolitan Statistical Area,486699,542629,04019,FALSE
+Fresno,California,06,0627000,23420,"Fresno, CA",Metropolitan Statistical Area,427652,542107,06019,FALSE
+Sacramento,California,06,0664000,40900,"Sacramento-Roseville-Folsom, CA",Metropolitan Statistical Area,407018,524943,06067,FALSE
+Kansas City,Missouri,29,2938000,28140,"Kansas City, MO-KS",Metropolitan Statistical Area,441545,508090,29095,TRUE
+Mesa,Arizona,04,0446000,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,396375,504258,04013,FALSE
+Atlanta,Georgia,13,1304000,12060,"Atlanta-Sandy Springs-Roswell, GA",Metropolitan Statistical Area,416474,498715,13121,TRUE
+Omaha,Nebraska,31,3137000,36540,"Omaha, NE-IA",Metropolitan Statistical Area,390007,486051,31055,FALSE
+Colorado Springs,Colorado,08,0816000,17820,"Colorado Springs, CO",Metropolitan Statistical Area,360890,478961,08041,FALSE
+Raleigh,North Carolina,37,3755000,39580,"Raleigh-Cary, NC",Metropolitan Statistical Area,276093,467665,37183,FALSE
+Long Beach,California,06,0643000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,461522,466742,06037,FALSE
+Virginia Beach,Virginia,51,5182000,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",Metropolitan Statistical Area,425257,459470,51810,FALSE
+Miami,Florida,12,1245000,33100,"Miami-Fort Lauderdale-West Palm Beach, FL",Metropolitan Statistical Area,362470,442241,12086,FALSE
+Oakland,California,06,0653000,41860,"San Francisco-Oakland-Fremont, CA",Metropolitan Statistical Area,399484,440646,06001,FALSE
+Minneapolis,Minnesota,27,2743000,33460,"Minneapolis-St. Paul-Bloomington, MN-WI",Metropolitan Statistical Area,382618,429954,27053,FALSE
+Tulsa,Oklahoma,40,4075000,46140,"Tulsa, OK",Metropolitan Statistical Area,393049,413066,40143,TRUE
+Bakersfield,California,06,0603526,12540,"Bakersfield-Delano, CA",Metropolitan Statistical Area,247057,403455,06029,FALSE
+Wichita,Kansas,20,2079000,48620,"Wichita, KS",Metropolitan Statistical Area,344284,397532,20173,FALSE
+Arlington,Texas,48,4804000,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,332969,394266,48439,FALSE
+Louisville/Jefferson County metro government (balance),Kentucky,21,2148006,31140,"Louisville/Jefferson County, KY-IN",Metropolitan Statistical Area,NA,386884,21111,FALSE
+Aurora,Colorado,08,0804000,19740,"Denver-Aurora-Centennial, CO",Metropolitan Statistical Area,276393,386261,08005,TRUE
+Tampa,Florida,12,1271000,45300,"Tampa-St. Petersburg-Clearwater, FL",Metropolitan Statistical Area,303447,384959,12057,FALSE
+New Orleans,Louisiana,22,2255000,35380,"New Orleans-Metairie, LA",Metropolitan Statistical Area,484674,383997,22071,FALSE
+Cleveland,Ohio,39,3916000,17410,"Cleveland, OH",Metropolitan Statistical Area,478403,372624,39035,FALSE
+Urban Honolulu,Hawaii,15,1571550,46520,"Urban Honolulu, HI",Metropolitan Statistical Area,NA,350964,15003,FALSE
+Anaheim,California,06,0602000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,328014,346824,06059,FALSE
+San Juan,Puerto Rico,72,7276770,41980,"San Juan-Bayam<U+00F3>n-Caguas, PR",Metropolitan Statistical Area,421958,322854,72127,FALSE
+Lexington-Fayette,Kentucky,21,2146027,30460,"Lexington-Fayette, KY",Metropolitan Statistical Area,260512,322570,21067,FALSE
+Stockton,California,06,0675000,44700,"Stockton-Lodi, CA",Metropolitan Statistical Area,243771,320804,06077,FALSE
+Corpus Christi,Texas,48,4817000,18580,"Corpus Christi, TX",Metropolitan Statistical Area,277454,317863,48355,FALSE
+Henderson,Nevada,32,3231900,29820,"Las Vegas-Henderson-North Las Vegas, NV",Metropolitan Statistical Area,175381,317610,32003,FALSE
+Riverside,California,06,0662000,40140,"Riverside-San Bernardino-Ontario, CA",Metropolitan Statistical Area,255166,314998,06065,FALSE
+Newark,New Jersey,34,3451000,35620,"New York-Newark-Jersey City, NY-NJ",Metropolitan Statistical Area,273546,311549,34013,FALSE
+St. Paul,Minnesota,27,2758000,33460,"Minneapolis-St. Paul-Bloomington, MN-WI",Metropolitan Statistical Area,287151,311527,27123,FALSE
+Santa Ana,California,06,0669000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,337977,310227,06059,FALSE
+Cincinnati,Ohio,39,3915000,17140,"Cincinnati, OH-KY-IN",Metropolitan Statistical Area,331285,309317,39061,FALSE
+Irvine,California,06,0636770,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,143072,307670,06059,FALSE
+Orlando,Florida,12,1253000,36740,"Orlando-Kissimmee-Sanford, FL",Metropolitan Statistical Area,185951,307573,12095,FALSE
+Pittsburgh,Pennsylvania,42,4261000,38300,"Pittsburgh, PA",Metropolitan Statistical Area,334563,302971,42003,FALSE
+St. Louis,Missouri,29,2965000,41180,"St. Louis, MO-IL",Metropolitan Statistical Area,348189,301578,29510,FALSE
+Greensboro,North Carolina,37,3728000,24660,"Greensboro-High Point, NC",Metropolitan Statistical Area,223891,299035,37081,FALSE
+Jersey City,New Jersey,34,3436000,35620,"New York-Newark-Jersey City, NY-NJ",Metropolitan Statistical Area,240055,292449,34017,FALSE
+Anchorage,Alaska,02,0203000,11260,"Anchorage, AK",Metropolitan Statistical Area,260283,291247,02020,FALSE
+Lincoln,Nebraska,31,3128000,30700,"Lincoln, NE",Metropolitan Statistical Area,225581,291082,31109,FALSE
+Plano,Texas,48,4858016,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,222030,285494,48085,TRUE
+Durham,North Carolina,37,3719000,20500,"Durham-Chapel Hill, NC",Metropolitan Statistical Area,187035,283506,37063,FALSE
+Buffalo,New York,36,3611000,15380,"Buffalo-Cheektowaga, NY",Metropolitan Statistical Area,292648,278349,36029,FALSE
+Chandler,Arizona,04,0412000,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,176581,275987,04013,FALSE
+Chula Vista,California,06,0613392,41740,"San Diego-Chula Vista-Carlsbad, CA",Metropolitan Statistical Area,173556,275487,06073,FALSE
+Toledo,Ohio,39,3977000,45780,"Toledo, OH",Metropolitan Statistical Area,313619,270871,39095,FALSE
+Madison,Wisconsin,55,5548000,31540,"Madison, WI",Metropolitan Statistical Area,208054,269840,55025,FALSE
+Gilbert,Arizona,04,0427400,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,109697,267918,04013,FALSE
+Reno,Nevada,32,3260600,39900,"Reno, NV",Metropolitan Statistical Area,180480,264165,32031,FALSE
+Fort Wayne,Indiana,18,1825000,23060,"Fort Wayne, IN",Metropolitan Statistical Area,205727,263886,18003,FALSE
+North Las Vegas,Nevada,32,3251800,29820,"Las Vegas-Henderson-North Las Vegas, NV",Metropolitan Statistical Area,115488,262527,32003,FALSE
+St. Petersburg,Florida,12,1263000,45300,"Tampa-St. Petersburg-Clearwater, FL",Metropolitan Statistical Area,248232,258308,12103,FALSE
+Lubbock,Texas,48,4845000,31180,"Lubbock, TX",Metropolitan Statistical Area,199564,257141,48303,FALSE
+Irving,Texas,48,4837000,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,191615,256684,48113,FALSE
+Laredo,Texas,48,4841464,29700,"Laredo, TX",Metropolitan Statistical Area,176576,255205,48479,FALSE
+Winston-Salem,North Carolina,37,3775000,49180,"Winston-Salem, NC",Metropolitan Statistical Area,185776,249545,37067,FALSE
+Chesapeake,Virginia,51,5116000,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",Metropolitan Statistical Area,199184,249422,51550,FALSE
+Scottsdale,Arizona,04,0465000,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,202705,241361,04013,FALSE
+Arlington,Virginia,51,5103000,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Metropolitan Statistical Area,189453,238643,51013,FALSE
+Norfolk,Virginia,51,5157000,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",Metropolitan Statistical Area,234403,238005,51710,FALSE
+Boise City,Idaho,16,1608830,14260,"Boise City, ID",Metropolitan Statistical Area,185787,235684,16001,FALSE
+Fremont,California,06,0626000,41860,"San Francisco-Oakland-Fremont, CA",Metropolitan Statistical Area,203413,230504,06001,FALSE
+Spokane,Washington,53,5367000,44060,"Spokane-Spokane Valley, WA",Metropolitan Statistical Area,195629,228989,53063,FALSE
+Baton Rouge,Louisiana,22,2205000,12940,"Baton Rouge, LA",Metropolitan Statistical Area,227818,227470,22033,FALSE
+Richmond,Virginia,51,5167000,40060,"Richmond, VA",Metropolitan Statistical Area,197790,226610,51760,FALSE
+San Bernardino,California,06,0665000,40140,"Riverside-San Bernardino-Ontario, CA",Metropolitan Statistical Area,185401,222101,06071,FALSE
+Tacoma,Washington,53,5370000,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,193556,219346,53053,FALSE
+Modesto,California,06,0648354,33700,"Modesto, CA",Metropolitan Statistical Area,188856,218464,06099,FALSE
+Huntsville,Alabama,01,0137000,26620,"Huntsville, AL",Metropolitan Statistical Area,158216,215006,01089,TRUE
+Des Moines,Iowa,19,1921000,19780,"Des Moines-West Des Moines, IA",Metropolitan Statistical Area,198682,214133,19153,TRUE
+Rochester,New York,36,3663000,40380,"Rochester, NY",Metropolitan Statistical Area,219773,211328,36055,FALSE
+Fayetteville,North Carolina,37,3722920,22180,"Fayetteville, NC",Metropolitan Statistical Area,121015,208501,37051,FALSE
+Columbus,Georgia,13,1319000,17980,"Columbus, GA-AL",Metropolitan Statistical Area,NA,206922,13215,FALSE
+Worcester,Massachusetts,25,2582000,49340,"Worcester, MA",Metropolitan Statistical Area,172648,206518,25027,FALSE
+Port St. Lucie,Florida,12,1258715,38940,"Port St. Lucie, FL",Metropolitan Statistical Area,88769,204851,12111,FALSE
+Little Rock,Arkansas,05,0541000,30780,"Little Rock-North Little Rock-Conway, AR",Metropolitan Statistical Area,183133,202591,05119,FALSE
+Augusta-Richmond County consolidated government (balance),Georgia,13,1304204,12260,"Augusta-Richmond County, GA-SC",Metropolitan Statistical Area,195182,202081,13245,FALSE
+Oxnard,California,06,0654652,37100,"Oxnard-Thousand Oaks-Ventura, CA",Metropolitan Statistical Area,170358,202063,06111,FALSE
+Birmingham,Alabama,01,0107000,13820,"Birmingham, AL",Metropolitan Statistical Area,242820,200733,01073,TRUE
+Montgomery,Alabama,01,0151000,33860,"Montgomery, AL",Metropolitan Statistical Area,201568,200603,01101,FALSE
+Amarillo,Texas,48,4803000,11100,"Amarillo, TX",Metropolitan Statistical Area,173627,200393,48375,TRUE
+Salt Lake City,Utah,49,4967000,41620,"Salt Lake City-Murray, UT",Metropolitan Statistical Area,181743,199723,49035,FALSE
+Grand Rapids,Michigan,26,2634000,24340,"Grand Rapids-Wyoming-Kentwood, MI",Metropolitan Statistical Area,197800,198917,26081,FALSE
+Overland Park,Kansas,20,2053775,28140,"Kansas City, MO-KS",Metropolitan Statistical Area,149080,197238,20091,FALSE
+Glendale,California,06,0630000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,194973,196543,06037,FALSE
+Tallahassee,Florida,12,1270600,45220,"Tallahassee, FL",Metropolitan Statistical Area,150624,196169,12073,FALSE
+Cape Coral,Florida,12,1210275,15980,"Cape Coral-Fort Myers, FL",Metropolitan Statistical Area,102286,194016,12071,FALSE
+Sioux Falls,South Dakota,46,4659020,43620,"Sioux Falls, SD-MN",Metropolitan Statistical Area,123975,192517,46099,TRUE
+Paradise,Nevada,32,3254600,29820,"Las Vegas-Henderson-North Las Vegas, NV",Metropolitan Statistical Area,186070,191238,32003,FALSE
+Providence,Rhode Island,44,4459000,39300,"Providence-Warwick, RI-MA",Metropolitan Statistical Area,173618,190934,44007,FALSE
+Vancouver,Washington,53,5374060,38900,"Portland-Vancouver-Hillsboro, OR-WA",Metropolitan Statistical Area,143560,190915,53011,FALSE
+Knoxville,Tennessee,47,4740000,28940,"Knoxville, TN",Metropolitan Statistical Area,173890,190740,47093,FALSE
+Akron,Ohio,39,3901000,10420,"Akron, OH",Metropolitan Statistical Area,217074,190469,39153,FALSE
+Shreveport,Louisiana,22,2270000,43340,"Shreveport-Bossier City, LA",Metropolitan Statistical Area,200145,187593,22017,TRUE
+Mobile,Alabama,01,0150000,33660,"Mobile, AL",Metropolitan Statistical Area,198915,187041,01097,FALSE
+Brownsville,Texas,48,4810768,15180,"Brownsville-Harlingen, TX",Metropolitan Statistical Area,139722,186738,48061,FALSE
+Newport News,Virginia,51,5156000,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",Metropolitan Statistical Area,180150,186247,51700,FALSE
+Fort Lauderdale,Florida,12,1224000,33100,"Miami-Fort Lauderdale-West Palm Beach, FL",Metropolitan Statistical Area,152397,182760,12011,FALSE
+Chattanooga,Tennessee,47,4714000,16860,"Chattanooga, TN-GA",Metropolitan Statistical Area,155554,181099,47065,FALSE
+Tempe,Arizona,04,0473000,38060,"Phoenix-Mesa-Chandler, AZ",Metropolitan Statistical Area,158625,180587,04013,FALSE
+Santa Rosa,California,06,0670098,42220,"Santa Rosa-Petaluma, CA",Metropolitan Statistical Area,147595,178127,06097,FALSE
+Eugene,Oregon,41,4123850,21660,"Eugene-Springfield, OR",Metropolitan Statistical Area,137893,176654,41039,FALSE
+Salem,Oregon,41,4164900,41420,"Salem, OR",Metropolitan Statistical Area,136924,175535,41047,TRUE
+Ontario,California,06,0653896,40140,"Riverside-San Bernardino-Ontario, CA",Metropolitan Statistical Area,158007,175265,06071,FALSE
+Cary,North Carolina,37,3710740,39580,"Raleigh-Cary, NC",Metropolitan Statistical Area,94536,174721,37183,FALSE
+Fort Collins,Colorado,08,0827425,22660,"Fort Collins-Loveland, CO",Metropolitan Statistical Area,118652,169810,08069,FALSE
+Springfield,Missouri,29,2970000,44180,"Springfield, MO",Metropolitan Statistical Area,151580,169176,29077,FALSE
+Clarksville,Tennessee,47,4715160,17300,"Clarksville, TN-KY",Metropolitan Statistical Area,103455,166722,47125,FALSE
+Bayam<U+00F3>n,Puerto Rico,72,7206593,41980,"San Juan-Bayam<U+00F3>n-Caguas, PR",Metropolitan Statistical Area,203499,165368,72021,FALSE
+Salinas,California,06,0664224,41500,"Salinas, CA",Metropolitan Statistical Area,151060,163542,06053,FALSE
+Alexandria,Virginia,51,5101000,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Metropolitan Statistical Area,128283,159467,51510,FALSE
+Macon-Bibb County,Georgia,13,1349008,31420,"Macon-Bibb County, GA",Metropolitan Statistical Area,NA,157346,13021,FALSE
+Corona,California,06,0616350,40140,"Riverside-San Bernardino-Ontario, CA",Metropolitan Statistical Area,124966,157136,06065,FALSE
+Kansas City,Kansas,20,2036000,28140,"Kansas City, MO-KS",Metropolitan Statistical Area,146866,156607,20209,FALSE
+Springfield,Massachusetts,25,2567000,44140,"Springfield, MA",Metropolitan Statistical Area,152082,155929,25013,FALSE
+Sunnyvale,California,06,0677000,41940,"San Jose-Sunnyvale-Santa Clara, CA",Metropolitan Statistical Area,131760,155805,06085,FALSE
+Jackson,Mississippi,28,2836000,27140,"Jackson, MS",Metropolitan Statistical Area,184256,153701,28049,TRUE
+Killeen,Texas,48,4839148,28660,"Killeen-Temple, TX",Metropolitan Statistical Area,86911,153095,48027,FALSE
+Murfreesboro,Tennessee,47,4751560,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN",Metropolitan Statistical Area,68816,152769,47149,FALSE
+Pasadena,Texas,48,4856000,26420,"Houston-Pasadena-The Woodlands, TX",Metropolitan Statistical Area,141674,151950,48201,FALSE
+Bellevue,Washington,53,5305210,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,109569,151854,53033,FALSE
+Charleston,South Carolina,45,4513330,16700,"Charleston-North Charleston, SC",Metropolitan Statistical Area,96650,150227,45019,TRUE
+Naperville,Illinois,17,1751622,16980,"Chicago-Naperville-Elgin, IL-IN",Metropolitan Statistical Area,128358,149540,17043,TRUE
+Rockford,Illinois,17,1765000,40420,"Rockford, IL",Metropolitan Statistical Area,150115,148655,17201,FALSE
+Bridgeport,Connecticut,09,0908000,14860,"Bridgeport-Stamford-Danbury, CT",Metropolitan Statistical Area,139529,148654,09001,FALSE
+Syracuse,New York,36,3673000,45060,"Syracuse, NY",Metropolitan Statistical Area,147306,148620,36067,FALSE
+Savannah,Georgia,13,1369000,42340,"Savannah, GA",Metropolitan Statistical Area,131510,147780,13051,FALSE
+Roseville,California,06,0662938,40900,"Sacramento-Roseville-Folsom, CA",Metropolitan Statistical Area,79921,147773,06061,FALSE
+Torrance,California,06,0680000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,137946,147067,06037,FALSE
+Metairie,Louisiana,22,2250115,35380,"New Orleans-Metairie, LA",Metropolitan Statistical Area,146136,143507,22051,FALSE
+McAllen,Texas,48,4845384,32580,"McAllen-Edinburg-Mission, TX",Metropolitan Statistical Area,106414,142210,48215,FALSE
+Visalia,California,06,0682954,47300,"Visalia, CA",Metropolitan Statistical Area,91565,141384,06107,FALSE
+Gainesville,Florida,12,1225175,23540,"Gainesville, FL",Metropolitan Statistical Area,95447,141085,12001,FALSE
+Orange,California,06,0653980,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,128821,139911,06059,FALSE
+Denton,Texas,48,4819972,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,80537,139869,48121,FALSE
+Warren,Michigan,26,2684000,19820,"Detroit-Warren-Dearborn, MI",Metropolitan Statistical Area,138247,139387,26099,FALSE
+Pasadena,California,06,0656000,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,133936,138699,06037,FALSE
+Waco,Texas,48,4876000,47380,"Waco, TX",Metropolitan Statistical Area,113726,138486,48309,FALSE
+Cedar Rapids,Iowa,19,1912000,16300,"Cedar Rapids, IA",Metropolitan Statistical Area,120758,137710,19113,FALSE
+Dayton,Ohio,39,3921000,19430,"Dayton-Kettering-Beavercreek, OH",Metropolitan Statistical Area,166179,137644,39113,FALSE
+Columbia,South Carolina,45,4516000,17900,"Columbia, SC",Metropolitan Statistical Area,116278,136632,45079,FALSE
+Kent,Washington,53,5335415,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,79524,136588,53033,FALSE
+Stamford,Connecticut,09,0973000,14860,"Bridgeport-Stamford-Danbury, CT",Metropolitan Statistical Area,117083,135470,09001,FALSE
+New Haven,Connecticut,09,0952000,35300,"New Haven, CT",Metropolitan Statistical Area,123626,134023,09009,FALSE
+Midland,Texas,48,4848072,33260,"Midland, TX",Metropolitan Statistical Area,94996,132524,48329,FALSE
+Santa Clara,California,06,0669084,41940,"San Jose-Sunnyvale-Santa Clara, CA",Metropolitan Statistical Area,102361,127647,06085,FALSE
+Athens-Clarke County unified government (balance),Georgia,13,1303440,12020,"Athens-Clarke County, GA",Metropolitan Statistical Area,100266,127315,13059,FALSE
+Thousand Oaks,California,06,0678582,37100,"Oxnard-Thousand Oaks-Ventura, CA",Metropolitan Statistical Area,117005,126966,06111,FALSE
+Topeka,Kansas,20,2071000,45820,"Topeka, KS",Metropolitan Statistical Area,122377,126587,20177,FALSE
+Columbia,Missouri,29,2915670,17860,"Columbia, MO",Metropolitan Statistical Area,84531,126254,29019,FALSE
+Vallejo,California,06,0681666,46700,"Vallejo, CA",Metropolitan Statistical Area,116760,126090,06095,FALSE
+Fargo,North Dakota,38,3825700,22020,"Fargo, ND-MN",Metropolitan Statistical Area,90599,125990,38017,FALSE
+Allentown,Pennsylvania,42,4202000,10900,"Allentown-Bethlehem-Easton, PA-NJ",Metropolitan Statistical Area,106632,125845,42077,FALSE
+Abilene,Texas,48,4801000,10180,"Abilene, TX",Metropolitan Statistical Area,115930,125182,48441,TRUE
+Berkeley,California,06,0606000,41860,"San Francisco-Oakland-Fremont, CA",Metropolitan Statistical Area,102743,124321,06001,FALSE
+Ann Arbor,Michigan,26,2603000,11460,"Ann Arbor, MI",Metropolitan Statistical Area,114024,123851,26161,FALSE
+Rochester,Minnesota,27,2754880,40340,"Rochester, MN",Metropolitan Statistical Area,85806,121395,27109,FALSE
+Lafayette,Louisiana,22,2240735,29180,"Lafayette, LA",Metropolitan Statistical Area,110257,121374,22055,FALSE
+Hartford,Connecticut,09,0937000,25540,"Hartford-West Hartford-East Hartford, CT",Metropolitan Statistical Area,121578,121054,09003,FALSE
+College Station,Texas,48,4815976,17780,"College Station-Bryan, TX",Metropolitan Statistical Area,67890,120511,48041,FALSE
+Palm Bay,Florida,12,1254000,37340,"Palm Bay-Melbourne-Titusville, FL",Metropolitan Statistical Area,79413,119760,12009,FALSE
+Richardson,Texas,48,4861796,19100,"Dallas-Fort Worth-Arlington, TX",Metropolitan Statistical Area,91802,119469,48113,TRUE
+Round Rock,Texas,48,4863500,12420,"Austin-Round Rock-San Marcos, TX",Metropolitan Statistical Area,61136,119468,48491,FALSE
+Cambridge,Massachusetts,25,2511000,14460,"Boston-Cambridge-Newton, MA-NH",Metropolitan Statistical Area,101355,118403,25017,FALSE
+West Palm Beach,Florida,12,1276600,33100,"Miami-Fort Lauderdale-West Palm Beach, FL",Metropolitan Statistical Area,82103,117415,12099,FALSE
+Evansville,Indiana,18,1822000,21780,"Evansville, IN",Metropolitan Statistical Area,121582,117298,18163,FALSE
+Clearwater,Florida,12,1212875,45300,"Tampa-St. Petersburg-Clearwater, FL",Metropolitan Statistical Area,108787,117292,12103,FALSE
+Billings,Montana,30,3006550,13740,"Billings, MT",Metropolitan Statistical Area,89847,117116,30111,FALSE
+Manchester,New Hampshire,33,3345140,31700,"Manchester-Nashua, NH",Metropolitan Statistical Area,107006,115644,33011,FALSE
+Wilmington,North Carolina,37,3774440,48900,"Wilmington, NC",Metropolitan Statistical Area,75838,115451,37129,FALSE
+Beaumont,Texas,48,4807000,13140,"Beaumont-Port Arthur, TX",Metropolitan Statistical Area,113866,115282,48245,FALSE
+Provo,Utah,49,4962470,39340,"Provo-Orem-Lehi, UT",Metropolitan Statistical Area,105166,115162,49049,FALSE
+North Charleston,South Carolina,45,4550875,16700,"Charleston-North Charleston, SC",Metropolitan Statistical Area,79641,114852,45019,TRUE
+Elgin,Illinois,17,1723074,16980,"Chicago-Naperville-Elgin, IL-IN",Metropolitan Statistical Area,94487,114797,17089,TRUE
+Carlsbad,California,06,0611194,41740,"San Diego-Chula Vista-Carlsbad, CA",Metropolitan Statistical Area,78247,114746,06073,FALSE
+The Woodlands,Texas,48,4872656,26420,"Houston-Pasadena-The Woodlands, TX",Metropolitan Statistical Area,55649,114436,48339,TRUE
+Odessa,Texas,48,4853388,36220,"Odessa, TX",Metropolitan Statistical Area,90943,114428,48135,FALSE
+Waterbury,Connecticut,09,0980000,47930,"Waterbury-Shelton, CT",Metropolitan Statistical Area,107271,114403,09009,FALSE
+Springfield,Illinois,17,1772000,44100,"Springfield, IL",Metropolitan Statistical Area,111454,114394,17167,FALSE
+High Point,North Carolina,37,3731400,24660,"Greensboro-High Point, NC",Metropolitan Statistical Area,85839,114059,37081,FALSE
+Peoria,Illinois,17,1759000,37900,"Peoria, IL",Metropolitan Statistical Area,112936,113150,17143,FALSE
+Lansing,Michigan,26,2646000,29620,"Lansing-East Lansing, MI",Metropolitan Statistical Area,119128,112644,26065,TRUE
+Lakeland,Florida,12,1238250,29460,"Lakeland-Winter Haven, FL",Metropolitan Statistical Area,78452,112641,12105,FALSE
+Pompano Beach,Florida,12,1258050,33100,"Miami-Fort Lauderdale-West Palm Beach, FL",Metropolitan Statistical Area,78191,112046,12011,FALSE
+Costa Mesa,California,06,0616532,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,108724,111918,06059,FALSE
+Pueblo,Colorado,08,0862000,39380,"Pueblo, CO",Metropolitan Statistical Area,102121,111876,08101,FALSE
+Las Cruces,New Mexico,35,3539380,29740,"Las Cruces, NM",Metropolitan Statistical Area,74267,111385,35013,FALSE
+Sugar Land,Texas,48,4870808,26420,"Houston-Pasadena-The Woodlands, TX",Metropolitan Statistical Area,63328,111026,48157,FALSE
+San Buenaventura (Ventura),California,06,0665042,37100,"Oxnard-Thousand Oaks-Ventura, CA",Metropolitan Statistical Area,100916,110763,06111,FALSE
+Everett,Washington,53,5322640,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,91488,110629,53061,FALSE
+Temecula,California,06,0678120,40140,"Riverside-San Bernardino-Ontario, CA",Metropolitan Statistical Area,57716,110003,06065,FALSE
+Dearborn,Michigan,26,2621000,19820,"Detroit-Warren-Dearborn, MI",Metropolitan Statistical Area,97775,109976,26163,FALSE
+Santa Maria,California,06,0669196,42200,"Santa Maria-Santa Barbara, CA",Metropolitan Statistical Area,77423,109707,06083,FALSE
+Greeley,Colorado,08,0832155,24540,"Greeley, CO",Metropolitan Statistical Area,76930,108795,08123,FALSE
+Centennial,Colorado,08,0812815,19740,"Denver-Aurora-Centennial, CO",Metropolitan Statistical Area,NA,108418,08005,FALSE
+Boulder,Colorado,08,0807850,14500,"Boulder, CO",Metropolitan Statistical Area,94673,108250,08013,FALSE
+Sandy Springs,Georgia,13,1368516,12060,"Atlanta-Sandy Springs-Roswell, GA",Metropolitan Statistical Area,85781,108080,13121,FALSE
+Ponce,Puerto Rico,72,7263820,38660,"Ponce, PR",Metropolitan Statistical Area,155038,107951,72113,FALSE
+Green Bay,Wisconsin,55,5531000,24580,"Green Bay, WI",Metropolitan Statistical Area,102313,107395,55009,FALSE
+Burbank,California,06,0608954,31080,"Los Angeles-Long Beach-Anaheim, CA",Metropolitan Statistical Area,100316,107337,06037,FALSE
+Renton,Washington,53,5357745,42660,"Seattle-Tacoma-Bellevue, WA",Metropolitan Statistical Area,50052,106785,53033,FALSE
+Hillsboro,Oregon,41,4134100,38900,"Portland-Vancouver-Hillsboro, OR-WA",Metropolitan Statistical Area,70186,106447,41067,FALSE
+Tyler,Texas,48,4874144,46340,"Tyler, TX",Metropolitan Statistical Area,83650,105995,48423,FALSE
+San Mateo,California,06,0668252,41860,"San Francisco-Oakland-Fremont, CA",Metropolitan Statistical Area,92482,105661,06081,FALSE
+Concord,North Carolina,37,3714100,16740,"Charlotte-Concord-Gastonia, NC-SC",Metropolitan Statistical Area,55977,105240,37025,FALSE
+Columbia,Maryland,24,2419125,12580,"Baltimore-Columbia-Towson, MD",Metropolitan Statistical Area,88254,104681,24027,FALSE
+South Bend,Indiana,18,1871000,43780,"South Bend-Mishawaka, IN-MI",Metropolitan Statistical Area,107789,103453,18141,FALSE
+Spokane Valley,Washington,53,5367167,44060,"Spokane-Spokane Valley, WA",Metropolitan Statistical Area,NA,102976,53063,FALSE
+Wichita Falls,Texas,48,4879000,48660,"Wichita Falls, TX",Metropolitan Statistical Area,104197,102316,48485,FALSE
+Davenport,Iowa,19,1919000,19340,"Davenport-Moline-Rock Island, IA-IL",Metropolitan Statistical Area,98359,101724,19163,FALSE
+Chico,California,06,0613014,17020,"Chico, CA",Metropolitan Statistical Area,59954,101475,06007,FALSE
+Edinburg,Texas,48,4822660,32580,"McAllen-Edinburg-Mission, TX",Metropolitan Statistical Area,48465,100243,48215,FALSE
+Roanoke,Virginia,51,5168000,40220,"Roanoke, VA",Metropolitan Statistical Area,94911,100011,51770,FALSE

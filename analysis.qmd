@@ -1,0 +1,237 @@
+---
+title: "Annexation Reach and Metro Growth, 2000-2020"
+subtitle: "Does a city's share of its home county's population predict its growth rate, controlling for state-line fragmentation and region?"
+format:
+  html:
+    code-fold: true
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(ggiraph)
+library(modelsummary)
+library(kableExtra)
+library(RColorBrewer)
+library(scales)
+
+theme_set(theme_minimal(base_size = 12))
+```
+
+## Data
+
+```{r}
+#| label: load-data
+#| message: false
+#| warning: false
+
+city <- read_csv("data/city_pop_2000_2020.csv", show_col_types = FALSE)
+county <- read_csv("data/county_pop_2000_2020.csv", show_col_types = FALSE)
+cbsa_flags <- read_csv("data/cbsa_state_flags.csv", show_col_types = FALSE)
+```
+
+### Region / division lookup
+
+Standard Census Bureau 4-region grouping, derived from `state_fips`.
+
+```{r}
+#| label: region-lookup
+
+region_lookup <- tribble(
+  ~state_fips, ~region,
+  "09", "Northeast", "23", "Northeast", "25", "Northeast", "33", "Northeast",
+  "44", "Northeast", "50", "Northeast", "34", "Northeast", "36", "Northeast",
+  "42", "Northeast",
+  "18", "Midwest", "17", "Midwest", "26", "Midwest", "39", "Midwest",
+  "55", "Midwest", "19", "Midwest", "20", "Midwest", "27", "Midwest",
+  "29", "Midwest", "31", "Midwest", "38", "Midwest", "46", "Midwest",
+  "10", "South", "11", "South", "12", "South", "13", "South", "24", "South",
+  "37", "South", "45", "South", "51", "South", "54", "South", "01", "South",
+  "21", "South", "28", "South", "47", "South", "05", "South", "22", "South",
+  "40", "South", "48", "South",
+  "04", "West", "08", "West", "16", "West", "35", "West", "30", "West",
+  "49", "West", "32", "West", "56", "West", "02", "West", "06", "West",
+  "15", "West", "41", "West", "53", "West",
+  "72", "Puerto Rico"
+)
+```
+
+### Build the analysis panel
+
+Join city -> county (by `county_fips`) and city -> CBSA state flags (by `cbsa_code`), compute `pct_of_county` and `cagr`.
+
+```{r}
+#| label: build-panel
+
+panel <- city %>%
+  left_join(
+    county %>% select(county_fips, county_name, population_2020_county = population_2020),
+    by = "county_fips"
+  ) %>%
+  left_join(
+    cbsa_flags %>% select(cbsa_code, n_states, multi_state_metro),
+    by = "cbsa_code"
+  ) %>%
+  left_join(region_lookup, by = "state_fips") %>%
+  mutate(
+    pct_of_county = population_2020 / population_2020_county * 100,
+    cagr = (population_2020 / population_2000)^(1 / 20) - 1,
+    multi_state_metro_flag = as.integer(multi_state_metro),
+    region = factor(region, levels = c("South", "Northeast", "Midwest", "West", "Puerto Rico"))
+  )
+
+# regression sample: drop the 6 rows with no usable 2000 population
+panel_reg <- panel %>% filter(!is.na(population_2000))
+
+cat("Full panel:", nrow(panel), "rows\n")
+cat("Regression sample (population_2000 non-missing):", nrow(panel_reg), "rows\n")
+cat("Excluded (no 2000 population):", nrow(panel) - nrow(panel_reg), "rows ->",
+    paste(panel %>% filter(is.na(population_2000)) %>% pull(place_name), collapse = ", "))
+```
+
+## Regression
+
+`cagr ~ pct_of_county + multi_state_metro + region`, with metro total population (log) added as a covariate in a second specification.
+
+```{r}
+#| label: model-fit
+
+m1 <- lm(cagr ~ pct_of_county + multi_state_metro_flag, data = panel_reg)
+m2 <- lm(cagr ~ pct_of_county + multi_state_metro_flag + region, data = panel_reg)
+
+panel_reg <- panel_reg %>%
+  mutate(log_metro_pop = log(population_2020_county))
+
+m3 <- lm(cagr ~ pct_of_county + multi_state_metro_flag + region + log_metro_pop, data = panel_reg)
+
+modelsummary(
+  list("Baseline" = m1, "+ Region" = m2, "+ Region + Metro Pop (log)" = m3),
+  stars = TRUE,
+  coef_rename = c(
+    pct_of_county = "City % of county population",
+    multi_state_metro_flag = "Multi-state metro (0/1)",
+    regionNortheast = "Region: Northeast",
+    regionMidwest = "Region: Midwest",
+    regionWest = "Region: West",
+    log_metro_pop = "log(county population, 2020)"
+  ),
+  gof_omit = "AIC|BIC|Log.Lik|F",
+  output = "kableExtra"
+) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
+```
+
+**Does the annexation-reach effect on `pct_of_county` survive controlling for region (and metro size)?** Yes on significance, but the sign is the opposite of the naive "bigger annexation reach -> faster growth" story: `pct_of_county` is negative and significant (p < 0.05) in all three specifications, meaning cities that already hold a *larger* share of their county's population tend to have *slower* 2000-2020 CAGR, controlling for region and metro size — consistent with a ceiling/mean-reversion effect (there is less room left to annex or in-fill once a city already dominates its county) rather than annexation reach driving extra growth. `multi_state_metro_flag` is never statistically distinguishable from zero and even flips sign once region is added, so on this cross-section state-line fragmentation alone does not show up as an independent growth penalty net of region and `pct_of_county` — the Columbus/Cincinnati contrast below should be read as a single illustrative case, not as evidence of a general multi-state effect.
+
+## Growth vs. annexation reach (interactive)
+
+```{r}
+#| label: scatter-plot
+#| fig-width: 8
+#| fig-height: 6
+
+panel_reg <- panel_reg %>%
+  mutate(
+    multi_state_lab = if_else(multi_state_metro, "Multi-state metro", "Single-state metro"),
+    tooltip_text = paste0(
+      place_name, ", ", state_name, "\n",
+      "% of county pop (2020): ", number(pct_of_county, accuracy = 0.1), "%\n",
+      "CAGR 2000-2020: ", percent(cagr, accuracy = 0.01), "\n",
+      multi_state_lab
+    )
+  )
+
+p <- ggplot(panel_reg, aes(x = pct_of_county, y = cagr, color = multi_state_lab)) +
+  geom_point_interactive(
+    aes(tooltip = tooltip_text, data_id = place_geoid),
+    size = 2.2, alpha = 0.8
+  ) +
+  geom_smooth(aes(group = 1), method = "lm", se = TRUE, color = "grey30", linewidth = 0.6) +
+  scale_color_brewer(palette = "Set2", name = NULL) +
+  scale_x_continuous(labels = label_number(suffix = "%")) +
+  scale_y_continuous(labels = label_percent(accuracy = 1)) +
+  labs(
+    x = "City population as % of home county population (2020)",
+    y = "City population CAGR, 2000-2020",
+    title = "City growth rate vs. share of home county population"
+  ) +
+  theme(legend.position = "bottom")
+
+girafe(
+  ggobj = p,
+  width_svg = 8, height_svg = 6,
+  options = list(
+    opts_sizing(rescale = TRUE),
+    opts_tooltip(opacity = 0.9)
+  )
+)
+```
+
+## Columbus, OH vs. Cincinnati, OH
+
+```{r}
+#| label: columbus-cincinnati
+
+cc <- panel %>%
+  filter(place_name %in% c("Columbus", "Cincinnati"), state_name == "Ohio") %>%
+  select(place_name, state_name, county_name, population_2000, population_2020,
+         pct_of_county, multi_state_metro, cagr) %>%
+  arrange(place_name)
+
+cc %>%
+  mutate(
+    population_2000 = comma(population_2000),
+    population_2020 = comma(population_2020),
+    pct_of_county = number(pct_of_county, accuracy = 0.1),
+    cagr = percent(cagr, accuracy = 0.01)
+  ) %>%
+  rename(
+    City = place_name, State = state_name, County = county_name,
+    `Pop. 2000` = population_2000, `Pop. 2020` = population_2020,
+    `% of county pop.` = pct_of_county, `Multi-state metro` = multi_state_metro,
+    `CAGR 2000-2020` = cagr
+  ) %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
+```
+
+::: {.callout-note}
+Motivating case: Columbus (single-state metro, ~68% of Franklin County) vs. Cincinnati (multi-state OH-KY-IN metro, ~37% of Hamilton County). See table above for the paired `pct_of_county` / `multi_state_metro` / `cagr` values.
+:::
+
+## Full panel table
+
+```{r}
+#| label: full-table
+
+panel %>%
+  select(place_name, state_name, cbsa_title, pct_of_county, multi_state_metro,
+         population_2000, population_2020, cagr) %>%
+  arrange(desc(pct_of_county)) %>%
+  mutate(
+    population_2000 = comma(population_2000),
+    population_2020 = comma(population_2020),
+    pct_of_county = number(pct_of_county, accuracy = 0.1),
+    cagr = if_else(is.na(cagr), NA_character_, percent(cagr, accuracy = 0.01))
+  ) %>%
+  rename(
+    City = place_name, State = state_name, CBSA = cbsa_title,
+    `% of county pop.` = pct_of_county, `Multi-state metro` = multi_state_metro,
+    `Pop. 2000` = population_2000, `Pop. 2020` = population_2020,
+    `CAGR 2000-2020` = cagr
+  ) %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
+  scroll_box(height = "500px")
+```
+
+## Discussion
+
+### Annexation reach as positional competition
+
+### State lines as a coordination barrier
+
+### Where this stops short of a full Girardian treatment

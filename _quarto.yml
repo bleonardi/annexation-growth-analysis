@@ -1,0 +1,8 @@
+project:
+  type: default
+
+format:
+  html:
+    theme: [flatly, custom.scss]
+    toc: true
+    linestretch: 1.6
